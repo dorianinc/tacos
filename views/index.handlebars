@@ -30,12 +30,14 @@
         <!-- Dynamically Insert Eaten Taco Here -->
         {{#each Tacos}}
           {{#if this.devoured}}
+          <form action="/taco/masTacos/{{id}}" method="POST">
             <div class="input-group">
               <li class="form-control">{{this.id}}. {{this.taco_name}}</li>
               <span class="input-group-btn">
-                <button class="btn btn-info whine-button" type="button">Mas Tacos!</button>
+                <button class="btn btn-info mas-tacos-button" type="submit">Mas Tacos!</button>
               </span>
             </div>
+          </form>
           {{/if}}
         {{/each}}
 

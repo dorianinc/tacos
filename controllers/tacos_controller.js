@@ -51,6 +51,22 @@ router.post('/taco/devour/:id', function (req, res) {
     });
 });
 
+// Make more Tacos
+router.post('/taco/masTacos/:id', function (req, res) {
+
+  db.Tacos.update({
+    taco_name: req.body.taco_name,
+    devoured: false
+  }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      res.redirect('/index');
+      console.log(data);
+    });
+});
+
 // DESTROY ALL TACOS! BWUAHAHAHAHAHA!!!!!!!
 router.get('/index/youMonster', function (req, res) {
   db.Tacos.destroy({
